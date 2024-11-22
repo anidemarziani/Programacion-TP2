@@ -1,0 +1,353 @@
+@charset "utf-8";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  font-family: Arial, sans-serif;
+  &.modalAbierto {
+    overflow: hidden;
+  }
+}
+.web {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100dvh;
+
+  > header {
+    padding: .5rem 1rem;
+    text-align: center;
+    background-color: #f0ebe3;
+
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+  > main {
+    padding: 2rem 1rem;
+    background: #eaeaea;
+  }
+
+  > footer {
+    padding: 1rem;
+    background-color: #f0ebe3;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+      list-style: none;
+    }
+  }
+}
+/* Textos */
+h2{
+  font-size: 2rem;
+}
+h3{
+  font-size: 1.75rem;
+}
+.precio{
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+/* Color Cajita */
+.color{
+  display: flex;
+  .cajita {
+    width: 2rem;
+    height: 2rem;
+    display: inline-block;
+  }
+  > div{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+}
+/* Botones */
+.btn-primario {
+  padding: .5rem 1rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #1f1f1f;
+  color: #ffffff;
+  transition: filter 300ms ease-out;
+  margin: 1rem 0 0;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #000000;
+  }
+}
+.btn-secundario {
+  color:#474747;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  text-align: left;
+  font-weight: 500;
+  cursor: pointer;
+  
+  &:hover {
+    cursor: pointer;
+    color: #000000;
+  }
+}
+/* Aside Mini carrito */
+#mini-carrito {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 1px solid #aeaeae;
+  margin-bottom: 1rem;
+}
+#productos {
+  display: grid;
+  grid-template-columns: 100%;
+  list-style: none;
+  margin-top: 1rem;
+  li {
+    border: 1px solid #0000001c;
+    position: relative;
+    > article{
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      padding: 2rem;
+      gap: 0.5rem;
+      .categoria{
+        font-size: 0.875rem;
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: .5rem .75rem;
+        border: 0.3px solid rgb(0 0 0 / 14%);
+      }
+      & .color{
+        justify-content: center;
+      }
+      .descripcion{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+      }
+    }
+    img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background-color: #ffffff;
+    }
+    > div {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+    }
+  }
+}
+/* Cerrar */
+.icon-cerrar{
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  cursor: pointer;
+}
+.icon-cerrar::before{
+  content: url("./Assets/Cerrar.svg");
+}
+/* Detalle producto */
+.modal{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.8);
+  border:none;
+  overflow: hidden;
+  .modal-contenido{
+    padding: 2rem;
+    border-radius: 0.5rem;
+    background-color: white;
+    margin-right: auto;
+    margin-left: auto;
+    transition: transform .3s ease-out;
+    transform: translate(0, +50px);
+    display: flex;
+    gap: 1.5rem;
+    .modalContenidoDer{
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      .categoria{
+        width: fit-content;
+        font-size: 0.875rem;
+        padding: .5rem .75rem;
+        border: 0.3px solid rgb(0 0 0 / 14%);
+      }
+    }
+  .modal-footer{
+    display: flex;
+    justify-content: end;
+    gap: 1.5rem;
+  }  
+  }
+  img {
+    width: 100%;
+  }
+  .detalle {
+    text-align: center;
+
+    img {
+      width: 100%;
+    }
+
+    img, h3, p {
+      margin-bottom: 1rem;
+    }
+  } 
+}
+/* Modal carrito */
+.modal-carrito{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.8);
+  border:none;
+  overflow: hidden;
+  display: flex;
+  justify-content: end;
+  .carrito {
+    width: 44vh;
+    height: 100vh;
+    background-color: #ffffff;
+    padding: 2rem;
+    > *:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+    .modal-header{
+        & h2{
+          margin-top: 1rem;
+        }
+    }
+    .modal-content{
+      .itemsAgregados{
+        display: flex;
+        gap: .75rem;
+        align-items: center;
+        margin-bottom: 1rem;
+        > span{
+          padding: 0.5rem 1rem;
+          background-color: #000000;
+          color: #ffffff;
+        }
+      }
+      > ul {
+          overflow: auto;
+          max-height: 80vh;
+          li {
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            border-bottom: 0.3px solid rgb(0 0 0 / 14%);
+            .col-2{
+              width: 30%;
+              > img{
+                width: 100%;
+              }
+            }
+            .btn-secundario{
+              position: absolute;
+              right: 2rem;
+              bottom: 1rem;
+            }
+          }
+      }
+    }
+    .modal-footer{
+      .total-container{
+        font-size: 1.5rem;
+        display: flex;
+        gap: .25rem;
+        &.show {
+          display: flex;
+          gap: 0.25rem;
+        }
+        &.hide {
+          display: none;
+        }
+      } 
+    }
+  }
+}
+.modal::backdrop,.modal-carrito::backdrop {
+  background-color: rgba(0, 0, 0, 0.55);
+}
+@media (width >= 576px) {
+  .web {
+    > footer ul {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  #productos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (width >= 992px) {
+  .web {
+    > footer ul {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  #productos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .modal{
+    .modalContenidoDer, .modalContenidoIzq{
+      width: 50%;
+    }
+    .modal-footer{
+      position: absolute;
+      right: 2rem;
+      bottom: 2rem;
+    }
+  }
+}
+@media screen and (max-width: 991px){
+  .modal{
+    .modal-contenido{
+      flex-direction: column;
+      align-items: center;
+      max-width: 500px;
+    }
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px){
+  .modal{
+    .modal-contenido{
+      max-width: calc(100% - 10rem);
+    }
+  }
+}
+@media screen and (min-width: 1200px){
+  .modal{
+    .modal-contenido{
+      max-width: 1000px;
+    }
+  }
+}
