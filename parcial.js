@@ -162,6 +162,7 @@ function mostrarCarrito() {
             refrescarTotalesProductoCarrito();
             $modal.close();
             $modal.remove();
+            $body.classList.remove("modalAbierto");
         }
     }
     const $botonCerrar = crearElemento( "span", {"class":"icon-cerrar","alt":"Cerrar","title":"Cerrar"});
