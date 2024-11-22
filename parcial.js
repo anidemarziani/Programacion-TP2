@@ -160,6 +160,8 @@ function mostrarCarrito() {
                 $productosUl.removeChild($productosUl.firstChild);
             }
             refrescarTotalesProductoCarrito();
+            $modal.close();
+            $modal.remove();
         }
     }
     const $botonCerrar = crearElemento( "span", {"class":"icon-cerrar","alt":"Cerrar","title":"Cerrar"});

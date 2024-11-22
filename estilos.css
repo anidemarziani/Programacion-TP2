@@ -155,13 +155,6 @@ h3{
     }
   }
 }
-/* Cerrar */
-.icon-cerrar{
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  cursor: pointer;
-}
 .icon-cerrar::before{
   content: url("./Assets/Cerrar.svg");
 }
@@ -327,6 +320,12 @@ h3{
       bottom: 2rem;
     }
   }
+  .icon-cerrar{
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    cursor: pointer;
+  }
 }
 @media screen and (max-width: 991px){
   .modal{
@@ -335,6 +334,12 @@ h3{
       align-items: center;
       max-width: 500px;
     }
+  }
+  .icon-cerrar{
+    position: absolute;
+    right: .5rem;
+    top: .5rem;
+    cursor: pointer;
   }
 }
 @media (min-width: 992px) and (max-width: 1199px){
